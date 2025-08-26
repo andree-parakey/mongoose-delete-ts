@@ -2,9 +2,10 @@ import {
 	FilterQuery,
 	Model,
 	MongooseBaseQueryOptions,
+	MongooseUpdateQueryOptions,
 	QueryOptions,
 	QueryWithHelpers,
-	UpdateWriteOpResult
+	UpdateWriteOpResult	
 } from 'mongoose';
 import DeletedSchema from './types/DeletedSchema';
 import { staticDelete } from './utils/deleteDocument';
@@ -19,7 +20,7 @@ import { DeleteSchemaOptions } from './types/DeleteSchemaOptions';
 import mergeOptions from './utils/mergeOptions';
 
 type DeleteOptions<RawDocType> = MongoDbDeleteOptions & Omit<MongooseBaseQueryOptions<RawDocType>, 'lean' | 'timestamps'>;
-type UpdateOptions<RawDocType> = MongoDbUpdateOptions & Omit<MongooseBaseQueryOptions<RawDocType>, 'lean'>;
+type UpdateOptions<RawDocType> = MongoDbUpdateOptions & Omit<MongooseUpdateQueryOptions<RawDocType>, 'lean'>;
 
 export interface DeletedStaticMethods<DocType, THelpers = {}, RawDocType = DocType> {
 	restoreOne(
